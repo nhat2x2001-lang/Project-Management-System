@@ -122,7 +122,7 @@ class DashboardView(tk.Frame):
         for col_idx, (label, icon, color, _) in enumerate(_CARDS):
             card = KPICard(cards_row, label=label, value="—",
                            icon=icon, accent_color=color)
-            card.grid(row=0, column=col_idx, padx=6, pady=4, sticky="nsew")
+            card.grid(row=0, column=col_idx, padx=8, pady=6, sticky="nsew")
             self._card_widgets.append(card)
 
         for col_idx in range(len(_CARDS)):
@@ -130,20 +130,20 @@ class DashboardView(tk.Frame):
 
         # ---- Charts row ------------------------------------------------
         charts_frame = tk.Frame(content, bg=theme.MAIN_BG)
-        charts_frame.pack(fill="x", padx=20, pady=(6, 6))
+        charts_frame.pack(fill="x", padx=20, pady=(12, 12))
 
         if _MPL_AVAILABLE:
             # Bar chart panel
             bar_panel = self._card_panel(charts_frame, "Budget Cost by Task (Top 10)")
-            bar_panel.pack(side="left", fill="both", expand=True, padx=(0, 8))
+            bar_panel.pack(side="left", fill="both", expand=True, padx=(0, 10))
             self._bar_panel_body = tk.Frame(bar_panel, bg=theme.CARD_BG)
-            self._bar_panel_body.pack(fill="both", expand=True, padx=10, pady=(0, 10))
+            self._bar_panel_body.pack(fill="both", expand=True, padx=12, pady=(0, 12))
 
             # Donut chart panel
             pie_panel = self._card_panel(charts_frame, "Materials by Quantity (Top 8)")
-            pie_panel.pack(side="left", fill="both", expand=True, padx=(8, 0))
+            pie_panel.pack(side="left", fill="both", expand=True, padx=(10, 0))
             self._pie_panel_body = tk.Frame(pie_panel, bg=theme.CARD_BG)
-            self._pie_panel_body.pack(fill="both", expand=True, padx=10, pady=(0, 10))
+            self._pie_panel_body.pack(fill="both", expand=True, padx=12, pady=(0, 12))
         else:
             lbl = tk.Label(
                 charts_frame,
@@ -233,17 +233,17 @@ class DashboardView(tk.Frame):
             self._bar_canvas.get_tk_widget().destroy()
             self._bar_canvas = None
 
-        fig = Figure(figsize=(5.4, 3.0), dpi=90, facecolor=theme.CARD_BG)
+        fig = Figure(figsize=(5.4, 3.2), dpi=90, facecolor=theme.CARD_BG)
         ax  = fig.add_subplot(111)
         ax.set_facecolor(theme.CARD_BG)
-        fig.subplots_adjust(left=0.04, right=0.98, top=0.90, bottom=0.12)
+        fig.subplots_adjust(left=0.22, right=0.96, top=0.94, bottom=0.10)
 
         if values:
             palette = theme.CHART_PALETTE[:len(values)]
-            bars = ax.barh(labels, values, color=palette[::-1], height=0.55)
+            bars = ax.barh(labels, values, color=palette[::-1], height=0.60)
             ax.invert_yaxis()
-            ax.set_xlabel("₱ Budget Cost", fontsize=7, color=theme.TEXT_MUTED)
-            ax.tick_params(axis="both", labelsize=7, colors=theme.TEXT_BODY)
+            ax.set_xlabel("₱ Budget Cost", fontsize=8, color=theme.TEXT_MUTED, labelpad=6)
+            ax.tick_params(axis="both", labelsize=8, colors=theme.TEXT_BODY)
             ax.spines["top"].set_visible(False)
             ax.spines["right"].set_visible(False)
             ax.spines["left"].set_visible(False)
@@ -254,9 +254,9 @@ class DashboardView(tk.Frame):
             # Value labels
             for bar in bars:
                 w = bar.get_width()
-                ax.text(w * 1.005, bar.get_y() + bar.get_height() / 2,
-                        f"₱{w:,.0f}", va="center", fontsize=6,
-                        color=theme.TEXT_MUTED)
+                ax.text(w * 1.01, bar.get_y() + bar.get_height() / 2,
+                        f"₱{w:,.0f}", va="center", fontsize=7,
+                        color=theme.TEXT_BODY, fontweight="bold")
         else:
             ax.text(0.5, 0.5, "No data yet", ha="center", va="center",
                     transform=ax.transAxes, color=theme.TEXT_MUTED, fontsize=10)
@@ -282,29 +282,32 @@ class DashboardView(tk.Frame):
             self._pie_canvas.get_tk_widget().destroy()
             self._pie_canvas = None
 
-        fig = Figure(figsize=(4.2, 3.0), dpi=90, facecolor=theme.CARD_BG)
+        fig = Figure(figsize=(4.2, 3.2), dpi=90, facecolor=theme.CARD_BG)
         ax  = fig.add_subplot(111)
         ax.set_facecolor(theme.CARD_BG)
-        fig.subplots_adjust(left=0.02, right=0.98, top=0.92, bottom=0.08)
+        fig.subplots_adjust(left=0.05, right=0.95, top=0.88, bottom=0.20)
 
         if values:
             wedges, texts, auto_texts = ax.pie(
                 values, labels=None,
                 colors=theme.CHART_PALETTE[:len(values)],
                 autopct="%1.0f%%",
-                pctdistance=0.75,
+                pctdistance=0.78,
                 startangle=90,
-                wedgeprops=dict(width=0.55, edgecolor=theme.CARD_BG, linewidth=2),
+                wedgeprops=dict(width=0.50, edgecolor=theme.CARD_BG, linewidth=2.5),
             )
             for t in auto_texts:
-                t.set_fontsize(7)
+                t.set_fontsize(8)
                 t.set_color(theme.TEXT_WHITE)
+                t.set_fontweight("bold")
             ax.legend(wedges, labels,
                       loc="lower center",
-                      bbox_to_anchor=(0.5, -0.12),
+                      bbox_to_anchor=(0.5, -0.02),
                       ncol=2,
                       fontsize=7,
-                      frameon=False)
+                      frameon=False,
+                      handlelength=1.2,
+                      handleheight=1.2)
         else:
             ax.text(0.5, 0.5, "No data yet", ha="center", va="center",
                     transform=ax.transAxes, color=theme.TEXT_MUTED, fontsize=10)

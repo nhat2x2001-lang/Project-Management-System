@@ -65,13 +65,27 @@ class KPICard(tk.Frame):
         self._value_widget = tk.Label(
             body, text=str(value),
             bg=theme.CARD_BG, fg=TEXT_DARK_OR_ACCENT(accent_color),
-            font=(theme.FONT_FAMILY, 26, "bold")
+            font=(theme.FONT_FAMILY, 26, "bold"),
+            wraplength=180,
+            justify="left"
         )
         self._value_widget.pack(anchor="w", pady=(4, 0))
 
     def update_value(self, value) -> None:
-        """Update the displayed value."""
-        self._value_widget.config(text=str(value))
+        """Update the displayed value with responsive font sizing."""
+        value_str = str(value)
+        # Adjust font size based on value length to prevent overflow
+        if len(value_str) > 12:
+            font_size = 18
+        elif len(value_str) > 8:
+            font_size = 22
+        else:
+            font_size = 26
+        
+        self._value_widget.config(
+            text=value_str,
+            font=(theme.FONT_FAMILY, font_size, "bold")
+        )
 
 
 def TEXT_DARK_OR_ACCENT(accent_color: str) -> str:

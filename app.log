@@ -1,0 +1,61 @@
+
+Access denied for project_uno@127.0.0.1 while creating database.
+Traceback (most recent call last):
+  File "C:\Users\Reynato\AppData\Local\Programs\Python\Python314\Lib\site-packages\mysql\connector\connection_cext.py", line 354, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Access denied for user 'project_uno'@'localhost' (using password: YES)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Reynato\project_uno_app\db_connection.py", line 53, in _ensure_database_exists
+    temp_connection = mysql.connector.connect(
+        host=host_value,
+        user=self.user,
+        password=password_value,
+    )
+  File "C:\Users\Reynato\AppData\Local\Programs\Python\Python314\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "C:\Users\Reynato\AppData\Local\Programs\Python\Python314\Lib\site-packages\mysql\connector\connection_cext.py", line 142, in __init__
+    self.connect(**kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Reynato\AppData\Local\Programs\Python\Python314\Lib\site-packages\mysql\connector\abstracts.py", line 1604, in connect
+    self._open_connection()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Reynato\AppData\Local\Programs\Python\Python314\Lib\site-packages\mysql\connector\connection_cext.py", line 360, in _open_connection
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.ProgrammingError: 1045 (28000): Access denied for user 'project_uno'@'localhost' (using password: YES)
+Access denied for project_uno@localhost while creating database.
+Traceback (most recent call last):
+  File "C:\Users\Reynato\AppData\Local\Programs\Python\Python314\Lib\site-packages\mysql\connector\connection_cext.py", line 354, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Access denied for user 'project_uno'@'localhost' (using password: YES)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Reynato\project_uno_app\db_connection.py", line 53, in _ensure_database_exists
+    temp_connection = mysql.connector.connect(
+        host=host_value,
+        user=self.user,
+        password=password_value,
+    )
+  File "C:\Users\Reynato\AppData\Local\Programs\Python\Python314\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "C:\Users\Reynato\AppData\Local\Programs\Python\Python314\Lib\site-packages\mysql\connector\connection_cext.py", line 142, in __init__
+    self.connect(**kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Reynato\AppData\Local\Programs\Python\Python314\Lib\site-packages\mysql\connector\abstracts.py", line 1604, in connect
+    self._open_connection()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Reynato\AppData\Local\Programs\Python\Python314\Lib\site-packages\mysql\connector\connection_cext.py", line 360, in _open_connection
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.ProgrammingError: 1045 (28000): Access denied for user 'project_uno'@'localhost' (using password: YES)
+
+TIMEOUT

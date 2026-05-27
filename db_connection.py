@@ -153,7 +153,7 @@ class DatabaseConnection:
         table_statements = [
             """
             CREATE TABLE IF NOT EXISTS Task (
-                TaskID INT AUTO_INCREMENT PRIMARY KEY,
+                TaskID VARCHAR(20) PRIMARY KEY,
                 WBS_Code VARCHAR(50),
                 Task_Description VARCHAR(255),
                 Duration INT,
@@ -166,7 +166,7 @@ class DatabaseConnection:
             CREATE TABLE IF NOT EXISTS Materials (
                 MaterialID INT AUTO_INCREMENT PRIMARY KEY,
                 Materials VARCHAR(255),
-                Quantity INT,
+                Quantity DECIMAL(10,2),
                 Unit VARCHAR(50),
                 Cost DECIMAL(10,2)
             )
@@ -180,10 +180,11 @@ class DatabaseConnection:
             """,
             """
             CREATE TABLE IF NOT EXISTS MaterialAssignmentCost (
-                ForemanID INT AUTO_INCREMENT PRIMARY KEY,
+                AssignmentCostID INT AUTO_INCREMENT PRIMARY KEY,
+                ForemanID VARCHAR(20),
                 Task_Description VARCHAR(255),
                 Materials VARCHAR(255),
-                Quantity INT,
+                Quantity DECIMAL(10,2),
                 Unit VARCHAR(50),
                 UnitPrice DECIMAL(10,2),
                 BudgetCost DECIMAL(10,2)
@@ -192,10 +193,10 @@ class DatabaseConnection:
             """
             CREATE TABLE IF NOT EXISTS MaterialsUsage (
                 UsageID INT AUTO_INCREMENT PRIMARY KEY,
-                TaskID INT,
+                TaskID VARCHAR(20),
                 MaterialID INT,
                 Materials VARCHAR(255),
-                Quantity INT,
+                Quantity DECIMAL(10,2),
                 Unit VARCHAR(50),
                 Cost DECIMAL(10,2),
                 FOREIGN KEY (TaskID) REFERENCES task(TaskID) ON DELETE CASCADE,
@@ -205,7 +206,7 @@ class DatabaseConnection:
             """
             CREATE TABLE IF NOT EXISTS TaskAssignments (
                 AssignmentID INT AUTO_INCREMENT PRIMARY KEY,
-                TaskID INT,
+                TaskID VARCHAR(20),
                 WorkerID VARCHAR(20),
                 AssignedDate DATE DEFAULT (CURRENT_DATE),
                 FOREIGN KEY (TaskID) REFERENCES task(TaskID) ON DELETE CASCADE,

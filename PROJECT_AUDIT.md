@@ -566,11 +566,164 @@ ConstructionApp (from app.gui)
 
 ---
 
-## 15. Summary
+## 15. CSV Data Audit Report
+
+**Date Conducted:** May 27, 2026  
+**Audit Tool:** audit_csv_data.py
+
+### 15.1 Audit Overview
+
+A comprehensive audit of the CSV files in the `docs/` directory was performed to identify data quality issues and inconsistencies. The audit examined 8 CSV files containing project data.
+
+### 15.2 Critical Issues Found
+
+#### **Critical: Encoding Errors (3 files)**
+- **Material Assignment and Cost.csv** - UTF-8 decode error at byte position 5599
+- **Materials Usage.csv** - UTF-8 decode error at byte position 3807  
+- **Materials.csv** - UTF-8 decode error at byte position 3282
+
+**Impact:** These files cannot be loaded with UTF-8 encoding. Likely causes:
+- Files saved with UTF-16 encoding
+- Contains special characters (em-dashes, smart quotes, etc.)
+- Requires character encoding detection and conversion
+
+**Recommendation:** Re-save these files with UTF-8 encoding or identify the correct encoding.
+
+#### **High: Duplicate Worker IDs (32 unique IDs with duplicates)**
+- PE001: 9 occurrences
+- L001-L016: 6-11 occurrences each
+- LM001-LM004: 2 occurrences each
+- L017-L027: 2-4 occurrences each
+
+**Total:** 213 worker records with massive duplication
+
+**Impact:** 
+- Cannot maintain referential integrity in database
+- Task assignments will be ambiguous
+- Data import will fail or create inconsistent records
+
+**Recommendation:** 
+1. Deduplicate Workers.csv (remove duplicate rows, keep only unique workers)
+2. Verify that Workers.csv and Task_Assignment.csv are related (they appear to be)
+3. Consider if Workers.csv should be flattened (currently expanded for each task assignment)
+
+#### **Medium: Data Format & Naming Issues**
+
+**Task.csv:**
+- Column name typo: `Task Discription` should be `Task Description`
+- Date format: Uses "Day MM/DD/YY" format (e.g., "Tue 10/07/25") - non-standard for database import
+- Duration format: Contains text "days" (e.g., "3.22 days") - will require parsing
+
+**Workers.csv:**
+- 3 records with leading/trailing spaces
+- Misspelling: "Safey Practitioner" should be "Safety Practitioner"
+
+**Materials.csv:**
+- Cost values contain comma separators (e.g., "1,560.00") - non-numeric format for database
+
+**Material Assignment and Cost.csv:**
+- Cost values contain comma separators - non-numeric format
+
+**Materials Usage.csv:**
+- Cost values contain comma separators - non-numeric format
+
+### 15.3 File-by-File Analysis
+
+| File | Records | Status | Issues |
+|------|---------|--------|--------|
+| Task.csv | 66 | ⚠️ Warning | 1 column typo, date/duration format |
+| Task_Description.csv | 66 | ✅ OK | No issues detected |
+| Task_Assignment.csv | 232 | ⚠️ Warning | 232 worker-task combinations |
+| Workers.csv | 213 | ❌ Critical | 32 duplicate IDs, spacing issues, misspelling |
+| Materials.csv | N/A | ❌ Critical | Encoding error, comma-separated costs |
+| Material Assignment and Cost.csv | N/A | ❌ Critical | Encoding error, comma-separated costs |
+| Materials Usage.csv | N/A | ❌ Critical | Encoding error, comma-separated costs |
+
+### 15.4 Data Quality Issues Summary
+
+**Total Issues Found: 38**
+
+- **Encoding Errors:** 3 files
+- **Duplicate Records:** 32 unique Worker IDs (213 total duplicates)
+- **Format Issues:** Column typos, date formats, cost formatting
+- **Text Issues:** Misspellings, leading/trailing spaces
+
+### 15.5 CSV File Relationships
+
+```
+Task.csv (66 tasks)
+  ↓
+Task_Assignment.csv (232 worker-task combinations)
+  ├── References Workers (by Worker ID)
+  └── References Task (implicit via description)
+
+Workers.csv (213 records - mostly duplicates)
+  ├── Lists all workers (with high duplication)
+  └── Used in Task_Assignment.csv
+
+Materials.csv
+  ↓
+Material Assignment and Cost.csv
+  (tracks material costs per foreman/task)
+  ↓
+Materials Usage.csv
+  (tracks actual material usage on tasks)
+```
+
+### 15.6 Recommendations for Data Import
+
+1. **Fix Encoding Issues First:**
+   - Convert Materials.csv, Material Assignment and Cost.csv, Materials Usage.csv to UTF-8
+   - Use: iconv, PowerShell, or Python script to convert
+
+2. **Deduplicate Workers:**
+   - Extract unique worker records from Workers.csv
+   - Create separate "TaskWorkerAssignments" or enhance Task_Assignment.csv structure
+   - Result: ~50-70 unique workers (estimate)
+
+3. **Standardize Formats:**
+   - Remove comma separators from all currency values
+   - Convert dates to YYYY-MM-DD format
+   - Extract numeric values from Duration field
+   - Fix column name typo in Task.csv
+
+4. **Clean Text Data:**
+   - Trim leading/trailing spaces from all text fields
+   - Fix misspellings (Safey → Safety)
+   - Validate against database schema
+
+5. **Data Validation:**
+   - Verify task ID references in Task_Assignment.csv
+   - Verify worker ID references are consistent
+   - Check for circular dependencies in task predecessors
+   - Validate date ranges (Start ≤ Finish)
+
+### 15.7 Suggested Data Import Strategy
+
+1. Fix CSV encoding (convert to UTF-8)
+2. Run data cleaning scripts
+3. Create intermediate staging table for bulk import
+4. Import with deduplication logic
+5. Validate referential integrity
+6. Move to production tables
+
+## 16. Summary
 
 **Project Uno** is a desktop-based construction management application built with Python Tkinter. It provides essential project management features including task scheduling, resource management, material tracking, and worker assignment. The application uses MySQL for persistent data storage with automatic schema initialization. The GUI presents information through a multi-tab interface with search and CRUD capabilities.
 
-**Current Status:** Functional with hardcoded authentication and local database configuration. Suitable for small to medium construction projects.
+**Current Status:** Functional with hardcoded authentication and local database configuration. Data import from CSV files requires preprocessing due to encoding and format issues (see Section 15).
+
+**CSV Data Status:** 
+- ✅ Task data ready for import (minor format fixes needed)
+- ❌ Material data requires encoding conversion
+- ⚠️ Worker data requires deduplication before import
+- ⚠️ All cost data requires comma removal
+
+**Priority Actions:**
+1. Resolve CSV encoding issues (Materials, Material Assignment, Materials Usage)
+2. Deduplicate and clean Workers.csv
+3. Implement data import pipeline with validation
+4. Address authentication security (see Section 12)
 
 ---
 

@@ -328,12 +328,13 @@ class DashboardTab(ttk.Frame):
             for row in rows:
                 self.app.db.execute_query(
                     "INSERT INTO MaterialAssignmentCost "
-                    "(Task_Description, Materials, Quantity, Unit, UnitPrice, BudgetCost) "
-                    "VALUES (%s, %s, %s, %s, %s, %s)",
+                    "(ForemanID, Task_Description, Materials, Quantity, Unit, UnitPrice, BudgetCost) "
+                    "VALUES (%s, %s, %s, %s, %s, %s, %s)",
                     (
+                        row.get("ForemanID", row.get("Foreman ID", "")).strip(),
                         row.get("Task Description", "").strip(),
                         row.get("Materials", "").strip(),
-                        self._parse_int(row.get("Quantity", "0")),
+                        self._parse_float(row.get("Quantity", "0")),
                         row.get("Unit", "").strip(),
                         self._parse_float(row.get("Unit Price", "0")),
                         self._parse_float(row.get("Budget Cost", "0")),
@@ -361,10 +362,10 @@ class DashboardTab(ttk.Frame):
                     "INSERT INTO MaterialsUsage (TaskID, MaterialID, Materials, Quantity, Unit, Cost) "
                     "VALUES (%s, %s, %s, %s, %s, %s)",
                     (
-                        self._parse_int(row.get("TASK ID", "0")),
+                        row.get("TASK ID", "").strip(),
                         self._parse_int(row.get("MATERIAL ID", "0")),
                         row.get("MATERIALS", "").strip(),
-                        self._parse_int(row.get("QUANTITY", "0")),
+                        self._parse_float(row.get("QUANTITY", "0")),
                         row.get("Unit", "").strip(),
                         self._parse_float(row.get("Cost", "0")),
                     )
@@ -395,6 +396,7 @@ class TaskMonitoringTab(ttk.Frame):
         left_frame = ttk.LabelFrame(self, text="Add New Task")
         left_frame.pack(side="left", fill="both", expand=True, padx=10, pady=10)
 
+        self.task_id_var = tk.StringVar()
         self.wbs_var = tk.StringVar()
         self.task_description_var = tk.StringVar()
         self.duration_var = tk.StringVar()
@@ -416,25 +418,25 @@ class TaskMonitoringTab(ttk.Frame):
         ttk.Label(frame, text="Expected columns: WBS Code · Task Discription · Duration · Start · Finish · Predecessors",
             font=("Segoe UI", 8), foreground="#6b7a8d").grid(row=1, column=0, columnspan=2, pady=(0, 8))
 
-        labels = ["WBS Code", "Task Description", "Duration", "Start (YYYY-MM-DD)", "Finish (YYYY-MM-DD)", "Predecessors"]
-        variables = [self.wbs_var, self.task_description_var, self.duration_var, self.start_var, self.finish_var, self.predecessors_var]
+        labels = ["Task ID", "WBS Code", "Task Description", "Duration", "Start (YYYY-MM-DD)", "Finish (YYYY-MM-DD)", "Predecessors"]
+        variables = [self.task_id_var, self.wbs_var, self.task_description_var, self.duration_var, self.start_var, self.finish_var, self.predecessors_var]
         for index, (label, var) in enumerate(zip(labels, variables), start=2):
             ttk.Label(frame, text=label).grid(row=index, column=0, sticky="e", pady=5, padx=5)
             ttk.Entry(frame, textvariable=var, width=30).grid(row=index, column=1, sticky="w", pady=5)
 
-        ttk.Button(frame, text="Add Task", command=self.add_task).grid(row=8, column=0, columnspan=2, pady=10)
-        ttk.Separator(frame, orient="horizontal").grid(row=9, column=0, columnspan=2, sticky="ew", pady=10)
-        ttk.Label(frame, text="Search by Description:").grid(row=10, column=0, sticky="e", pady=5)
-        ttk.Entry(frame, textvariable=self.search_query_var, width=30).grid(row=10, column=1, sticky="w", pady=5)
-        ttk.Button(frame, text="Search Task", command=self.search_task).grid(row=11, column=0, columnspan=2, pady=5)
-        ttk.Label(frame, text="Search by Task ID:").grid(row=12, column=0, sticky="e", pady=5)
-        ttk.Entry(frame, textvariable=self.search_id_var, width=30).grid(row=12, column=1, sticky="w", pady=5)
-        ttk.Button(frame, text="Search Task ID", command=self.search_task_by_id).grid(row=13, column=0, columnspan=2, pady=5)
-        ttk.Button(frame, text="Delete Task", command=self.remove_task).grid(row=14, column=0, columnspan=2, pady=10)
-        ttk.Button(frame, text="Clear All Tasks", command=self.clear_tasks).grid(row=15, column=0, columnspan=2, pady=(2, 5), sticky="ew", padx=5)
+        ttk.Button(frame, text="Add Task", command=self.add_task).grid(row=9, column=0, columnspan=2, pady=10)
+        ttk.Separator(frame, orient="horizontal").grid(row=10, column=0, columnspan=2, sticky="ew", pady=10)
+        ttk.Label(frame, text="Search by Description:").grid(row=11, column=0, sticky="e", pady=5)
+        ttk.Entry(frame, textvariable=self.search_query_var, width=30).grid(row=11, column=1, sticky="w", pady=5)
+        ttk.Button(frame, text="Search Task", command=self.search_task).grid(row=12, column=0, columnspan=2, pady=5)
+        ttk.Label(frame, text="Search by Task ID:").grid(row=13, column=0, sticky="e", pady=5)
+        ttk.Entry(frame, textvariable=self.search_id_var, width=30).grid(row=13, column=1, sticky="w", pady=5)
+        ttk.Button(frame, text="Search Task ID", command=self.search_task_by_id).grid(row=14, column=0, columnspan=2, pady=5)
+        ttk.Button(frame, text="Delete Task", command=self.remove_task).grid(row=15, column=0, columnspan=2, pady=10)
+        ttk.Button(frame, text="Clear All Tasks", command=self.clear_tasks).grid(row=16, column=0, columnspan=2, pady=(2, 5), sticky="ew", padx=5)
 
         status_frame = ttk.LabelFrame(frame, text="Selected Task")
-        status_frame.grid(row=16, column=0, columnspan=2, sticky="ew", pady=10)
+        status_frame.grid(row=17, column=0, columnspan=2, sticky="ew", pady=10)
         ttk.Label(status_frame, text="Task ID:").grid(row=0, column=0, padx=5, pady=5, sticky="e")
         ttk.Label(status_frame, textvariable=self.selected_task_id).grid(row=0, column=1, padx=5, pady=5, sticky="w")
         ttk.Label(status_frame, text="Description:").grid(row=1, column=0, padx=5, pady=5, sticky="e")
@@ -461,6 +463,7 @@ class TaskMonitoringTab(ttk.Frame):
         self.task_tree.bind("<<TreeviewSelect>>", self.on_task_select)
 
     def add_task(self):
+        task_id = self.task_id_var.get().strip()
         task_description = self.task_description_var.get().strip()
         wbs_code = self.wbs_var.get().strip()
         duration = self.duration_var.get().strip()
@@ -468,8 +471,8 @@ class TaskMonitoringTab(ttk.Frame):
         finish_date = self.finish_var.get().strip()
         predecessors = self.predecessors_var.get().strip()
 
-        if not task_description or not wbs_code:
-            messagebox.showerror("Validation Error", "WBS Code and Task Description are required.")
+        if not task_id or not task_description or not wbs_code:
+            messagebox.showerror("Validation Error", "Task ID, WBS Code and Task Description are required.")
             return
         if not self._validate_integer(duration, "Duration"):
             return
@@ -480,8 +483,8 @@ class TaskMonitoringTab(ttk.Frame):
 
         try:
             self.app.db.execute_query(
-                "INSERT INTO Task (WBS_Code, Task_Description, Duration, Start, Finish, Predecessors) VALUES (%s, %s, %s, %s, %s, %s)",
-                (wbs_code, task_description, int(duration), start_date, finish_date, predecessors)
+                "INSERT INTO Task (TaskID, WBS_Code, Task_Description, Duration, Start, Finish, Predecessors) VALUES (%s, %s, %s, %s, %s, %s, %s)",
+                (task_id, wbs_code, task_description, int(duration), start_date, finish_date, predecessors)
             )
             messagebox.showinfo("Success", "Task added successfully.")
             self._clear_task_form()
@@ -507,10 +510,11 @@ class TaskMonitoringTab(ttk.Frame):
 
     def search_task_by_id(self):
         task_id = self.search_id_var.get().strip()
-        if not self._validate_integer(task_id, "Task ID"):
+        if not task_id:
+            messagebox.showerror("Validation Error", "Task ID is required.")
             return
         try:
-            rows = self.app.db.fetch_all("SELECT * FROM Task WHERE TaskID = %s", (int(task_id),))
+            rows = self.app.db.fetch_all("SELECT * FROM Task WHERE TaskID = %s", (task_id,))
             if rows:
                 self._populate_task_tree(rows)
                 self.selected_task_id.set(rows[0]["TaskID"])
@@ -523,10 +527,11 @@ class TaskMonitoringTab(ttk.Frame):
 
     def remove_task(self):
         task_id = self.search_id_var.get().strip()
-        if not self._validate_integer(task_id, "Task ID"):
+        if not task_id:
+            messagebox.showerror("Validation Error", "Task ID is required.")
             return
         try:
-            self.app.db.execute_query("DELETE FROM Task WHERE TaskID = %s", (int(task_id),))
+            self.app.db.execute_query("DELETE FROM Task WHERE TaskID = %s", (task_id,))
             messagebox.showinfo("Success", "Task removed successfully.")
             self.refresh_task_list()
             self.app.refresh_dashboard()
@@ -585,6 +590,7 @@ class TaskMonitoringTab(ttk.Frame):
             return False
 
     def _clear_task_form(self):
+        self.task_id_var.set("")
         self.wbs_var.set("")
         self.task_description_var.set("")
         self.duration_var.set("")
@@ -633,8 +639,7 @@ class TaskMonitoringTab(ttk.Frame):
             return
         try:
             self.app.db.execute_query("SET SQL_SAFE_UPDATES = 0")
-            self.app.db.execute_query("DELETE FROM Task WHERE TaskID > 0")
-            self.app.db.execute_query("ALTER TABLE Task AUTO_INCREMENT = 1")
+            self.app.db.execute_query("DELETE FROM Task")
             self.app.db.execute_query("SET SQL_SAFE_UPDATES = 1")
             messagebox.showinfo("Success", "All tasks cleared.")
             self.refresh_task_list()
@@ -656,10 +661,14 @@ class TaskMonitoringTab(ttk.Frame):
 
             inserted = 0
             for row in rows:
+                task_id = row.get("Task ID", "").strip()
+                if not task_id:
+                    continue
                 self.app.db.execute_query(
-                    "INSERT INTO Task (WBS_Code, Task_Description, Duration, Start, Finish, Predecessors) "
-                    "VALUES (%s, %s, %s, %s, %s, %s)",
+                    "INSERT INTO Task (TaskID, WBS_Code, Task_Description, Duration, Start, Finish, Predecessors) "
+                    "VALUES (%s, %s, %s, %s, %s, %s, %s)",
                     (
+                        task_id,
                         row.get("WBS Code", ""),
                         row.get("Task Discription", ""),
                         self._parse_duration(row.get("Duration", "0")),
@@ -801,8 +810,7 @@ class ResourceManagementTab(ttk.Frame):
             return
         try:
             self.app.db.execute_query("SET SQL_SAFE_UPDATES = 0")
-            self.app.db.execute_query("DELETE FROM Workers WHERE WorkerID > 0")
-            self.app.db.execute_query("ALTER TABLE Workers AUTO_INCREMENT = 1")
+            self.app.db.execute_query("DELETE FROM Workers")
             self.app.db.execute_query("SET SQL_SAFE_UPDATES = 1")
             messagebox.showinfo("Success", "All workers cleared.")
             self.load_workers()
@@ -865,7 +873,7 @@ class ResourceManagementTab(ttk.Frame):
         try:
             self.app.db.execute_query(
                 "UPDATE Workers SET WorkerName = %s, Position = %s WHERE WorkerID = %s",
-                (name, position, int(worker_id))
+                (name, position, worker_id)
             )
             messagebox.showinfo("Success", "Worker information updated.")
             self.load_workers()
@@ -879,7 +887,7 @@ class ResourceManagementTab(ttk.Frame):
             messagebox.showerror("Validation Error", "Select a worker to remove.")
             return
         try:
-            self.app.db.execute_query("DELETE FROM Workers WHERE WorkerID = %s", (int(worker_id),))
+            self.app.db.execute_query("DELETE FROM Workers WHERE WorkerID = %s", (worker_id,))
             messagebox.showinfo("Success", "Worker removed successfully.")
             self._clear_worker_form()
             self.load_workers()
@@ -975,7 +983,7 @@ class ResourceManagementTab(ttk.Frame):
                     (
                         material_id,
                         name,
-                        self._parse_int(row.get("QUANTITY", "0")),
+                        self._parse_float(row.get("QUANTITY", "0")),
                         row.get("Unit", "").strip(),
                         self._parse_float(row.get("Cost", "0")),
                     )

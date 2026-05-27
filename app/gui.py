@@ -1034,6 +1034,7 @@ class TaskAssignmentTab(ttk.Frame):
 
         control_frame = ttk.Frame(form_frame)
         control_frame.grid(row=4, column=0, columnspan=2, pady=(5, 0))
+        ttk.Button(control_frame, text="⬆ Import CSV", command=self.import_task_assignments_csv).pack(side="left", padx=(0, 10))
         ttk.Button(control_frame, text="Refresh Assignments", command=self.refresh_assignments).pack(side="left", padx=(0, 10))
         ttk.Button(control_frame, text="Delete Assignment", command=self.delete_assignment).pack(side="left")
 
@@ -1112,6 +1113,58 @@ class TaskAssignmentTab(ttk.Frame):
         except RuntimeError as exc:
             messagebox.showerror("Delete Failed", str(exc))
 
+    def import_task_assignments_csv(self):
+        """Import task assignments from CSV file."""
+        filepath = filedialog.askopenfilename(
+            title="Select Task Assignment CSV",
+            filetypes=[("CSV Files", "*.csv")]
+        )
+        if not filepath:
+            return
+        try:
+            with open(filepath, newline="", encoding="cp1252", errors="replace") as f:
+                rows = list(csv.DictReader(f))
+
+            # Build a mapping of task descriptions to TaskIDs
+            tasks = self.app.db.fetch_all("SELECT TaskID, Task_Description FROM Task")
+            task_desc_to_id = {task["Task_Description"].strip(): task["TaskID"] for task in tasks}
+
+            inserted = 0
+            skipped = 0
+            current_task_id = None
+
+            for row in rows:
+                task_desc = row.get("TASK DESCRIPTION", "").strip()
+                worker_id = row.get("Worker ID", "").strip()
+
+                # Update current task if description is provided
+                if task_desc:
+                    current_task_id = task_desc_to_id.get(task_desc)
+
+                # Skip rows without worker ID or if we don't have a current task
+                if not worker_id or not current_task_id:
+                    skipped += 1
+                    continue
+
+                # Insert assignment
+                try:
+                    self.app.db.execute_query(
+                        "INSERT IGNORE INTO TaskAssignments (TaskID, WorkerID) VALUES (%s, %s)",
+                        (current_task_id, worker_id)
+                    )
+                    inserted += 1
+                except:
+                    skipped += 1
+
+            messagebox.showinfo(
+                "Import Complete",
+                f"{inserted} assignment(s) imported.\n{skipped} rows skipped (duplicates/invalid data)."
+            )
+            self.refresh_assignments()
+            self.app.refresh_dashboard()
+        except Exception as exc:
+            messagebox.showerror("Import Failed", str(exc))
+
     def refresh_assignments(self):
         self.load_task_options()
         self.load_worker_options()
@@ -1145,12 +1198,11 @@ class TaskAssignmentTab(ttk.Frame):
 
     @staticmethod
     def _parse_selection_id(selection):
+        """Extract ID from 'ID - Description' format."""
         if " - " not in selection:
             return None
-        try:
-            return int(selection.split(" - ", 1)[0])
-        except ValueError:
-            return None
+        # Return string ID without converting to int (supports VARCHAR IDs like "002", "PE001")
+        return selection.split(" - ", 1)[0].strip()
 
 
 class MainFrame(ttk.Frame):

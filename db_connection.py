@@ -152,7 +152,7 @@ class DatabaseConnection:
         """Create the required tables if they are missing."""
         table_statements = [
             """
-            CREATE TABLE Task (
+            CREATE TABLE IF NOT EXISTS Task (
                 TaskID VARCHAR(20) PRIMARY KEY,
                 WBS_Code VARCHAR(50),
                 Task_Description VARCHAR(255),
@@ -163,7 +163,7 @@ class DatabaseConnection:
             )
             """,
             """
-            CREATE TABLE Materials (
+            CREATE TABLE IF NOT EXISTS Materials (
                 MaterialID INT AUTO_INCREMENT PRIMARY KEY,
                 Materials VARCHAR(255),
                 Quantity DECIMAL(10,2),
@@ -172,14 +172,14 @@ class DatabaseConnection:
             )
             """,
             """
-            CREATE TABLE Workers (
+            CREATE TABLE IF NOT EXISTS Workers (
                 WorkerID VARCHAR(20) PRIMARY KEY,
                 WorkerName VARCHAR(255),
                 Position VARCHAR(100)
             )
             """,
-            """IF NOT EXISTS 
-            CREATE TABLE MaterialAssignmentCost (
+            """
+            CREATE TABLE IF NOT EXISTS MaterialAssignmentCost (
                 AssignmentCostID INT AUTO_INCREMENT PRIMARY KEY,
                 ForemanID VARCHAR(20),
                 Task_Description VARCHAR(255),
@@ -189,23 +189,23 @@ class DatabaseConnection:
                 UnitPrice DECIMAL(10,2),
                 BudgetCost DECIMAL(10,2)
             )
-            """,IF NOT EXISTS 
+            """,
             """
-            CREATE TABLE MaterialsUsage (
+            CREATE TABLE IF NOT EXISTS MaterialsUsage (
                 UsageID INT AUTO_INCREMENT PRIMARY KEY,
                 TaskID VARCHAR(20),
                 MaterialID INT,
                 Materials VARCHAR(255),
                 Quantity DECIMAL(10,2),
                 Unit VARCHAR(50),
-                Cost DECIIF NOT EXISTS MAL(10,2),
+                Cost DECIMAL(10,2),
                 FOREIGN KEY (TaskID) REFERENCES task(TaskID) ON DELETE CASCADE,
                 FOREIGN KEY (MaterialID) REFERENCES materials(MaterialID) ON DELETE CASCADE
             )
             """,
             """
-            CREATE TABLE TaskAssignments (
-                AssignmenIF NOT EXISTS tID INT AUTO_INCREMENT PRIMARY KEY,
+            CREATE TABLE IF NOT EXISTS TaskAssignments (
+                AssignmentID INT AUTO_INCREMENT PRIMARY KEY,
                 TaskID VARCHAR(20),
                 WorkerID VARCHAR(20),
                 AssignedDate DATE DEFAULT (CURRENT_DATE),
@@ -216,8 +216,7 @@ class DatabaseConnection:
         ]
 
         for statement in table_statements:
-            self.execute_query(statement)
-IF NOT EXISTS 
+            self.execute_query(statement) 
     def get_cursor(self):
         """Return an active cursor. Reconnect automatically if needed."""
         if self.connection is None or not self.connection.is_connected():
@@ -230,7 +229,7 @@ IF NOT EXISTS
         try:
             if many and isinstance(params, list):
                 cursor.executemany(query, params)
-            else:IF NOT EXISTS 
+            else:
                 cursor.execute(query, params or ())
             self.connection.commit()
             return cursor

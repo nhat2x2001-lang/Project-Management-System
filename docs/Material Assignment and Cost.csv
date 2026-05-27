@@ -1,0 +1,136 @@
+ForemanID,Task Description,Materials,Quantity,Unit,Unit Price,Budget Cost
+F001,Project Billboard/Signboard,Ordinary Plywood 1/2" thk. x 4' x 8',2.00,pc.,780.00,"1,560.00"
+F001,Project Billboard/Signboard,Tarpaulin (4' x 8'),2.00,pc.,"1,000.00","2,000.00"
+F001,Project Billboard/Signboard,Assorted Lumber,100.00,bd.ft.,37.00,"3,700.00"
+F001,Project Billboard/Signboard,Assorted CW Nails,2.00,kg.,60.00,120.00
+F001,Occupational Safety and Health Program,"Personal Protective Equipment (includes Hard Hats, Safety Shoes, Gloves, etc.)",1.00,L.S.,"8,000.00","8,000.00"
+F001,Occupational Safety and Health Program,Signages,1.00,L.S.,"15,000.00","15,000.00"
+F001,Structural Steel,W 10 x 33 Wide Flange,"6,799.95",kg.,50.00,"339,997.50"
+F001,Structural Steel,12 mm thk. Base Plate,32.20,kg.,48.00,"1,545.60"
+F001,Structural Steel,8 mm thk. Stiffener Plate,42.80,kg.,48.00,"2,054.40"
+F001,Structural Steel,20 mm dia. Anchor Bolt,24.00,pc.,36.00,864.00
+F001,Structural Steel,Welding Rod,154.30,kg.,163.00,"25,150.90"
+F001,Structural Steel,Oxy/Acetylene,7.00,set,"2,500.00","17,500.00"
+F001,Removal of Structures and Obstruction,Oxy/Acetylene,1.00,set,"2,500.00","2,500.00"
+F001,"Structural Concrete (Class A, 28 days)",Gravel,173.00,cu.m.,"1,200.00","207,600.00"
+F001,"Structural Concrete (Class A, 28 days)",Sand,86.50,cu.m.,"1,400.00","121,100.00"
+F001,"Structural Concrete (Class A, 28 days)",Portland Cement,"1,574.30",bags,300.00,"472,290.00"
+F001,"Structural Concrete (Class A, 28 days) Small Volume",Gravel,5.50,cu.m.,"1,200.00","6,600.00"
+F001,"Structural Concrete (Class A, 28 days) Small Volume",Sand,2.75,cu.m.,"1,400.00","3,850.00"
+F001,"Structural Concrete (Class A, 28 days) Small Volume",Portland Cement,50.05,bags,300.00,"15,015.00"
+F001,Forms and Falsework,"G.I. Scaffold (including platform, clamps, pipes, etc.)",1.00,L.S.,"150,000.00","150,000.00"
+F001,Reinforcing Steel,Deformed Reinforcing Steel (Grade 60) 10 mm dia.,"1,367.00",kgs.,40.00,"54,680.00"
+F001,Reinforcing Steel,Deformed Reinforcing Steel (Grade 60) 12 mm dia.,"2,361.00",kgs.,40.00,"94,440.00"
+F001,Reinforcing Steel,Deformed Reinforcing Steel (Grade 60) 16 mm dia.,"5,101.00",kgs.,40.00,"204,040.00"
+F001,Reinforcing Steel,Deformed Reinforcing Steel (Grade 60) 20 mm dia.,"1,334.00",kgs.,40.00,"53,360.00"
+F001,Reinforcing Steel,#16 G.I. Tie Wire,152.45,kgs.,100.00,"15,244.50"
+F001,Reinforcing Steel,Consumables (5% of material cost),,,,"21,088.23"
+F001,Plumbing Works,Roof Drain,2.00,pc.,191.00,382.00
+F001,Plumbing Works,Floor Drain,1.00,pc.,191.00,191.00
+F001,Plumbing Works,150 mm dia. PVC,6.00,pc.,750.00,"4,500.00"
+F001,Plumbing Works,75 mm dia. PVC,9.00,pc.,536.00,"4,824.00"
+F001,Plumbing Works,150 mm dia. PVC Elbow 90 deg.,6.00,pc.,109.00,654.00
+F001,Plumbing Works,Consumables (5% of Material Cost),,,,527.55
+F001,Catch Basin,Portland Cement,4.00,bag,300.00,"1,200.00"
+F001,Catch Basin,Sand,0.80,cu.m.,"1,400.00","1,120.00"
+F001,Catch Basin,Gravel,1.00,cu.m.,"1,200.00","1,200.00"
+F001,Catch Basin,Deformed Steel Bar,7.40,kg.,38.00,281.20
+F001,Catch Basin,#16 G.I. Tie Wire,0.10,kg.,100.00,10.00
+F001,Catch Basin,4" CHB,15.00,pc.,13.00,195.00
+F001,Ceiling,6mm Thk. Ordinary Plywood,16.65,pc.,300.00,"4,996.38"
+F001,Ceiling,Metal Furring,51.61,pc.,"1,400.00","72,248.96"
+F001,Ceiling,Carrying Channel,16.29,pc.,125.00,"2,036.19"
+F001,Ceiling,Hanger Bars/Rod,45.63,pc.,25.00,"1,140.73"
+F001,Ceiling,Channel Clip,273.77,pc.,4.50,"1,231.98"
+F001,Ceiling,Wall Angle,10.86,pc.,90.00,977.37
+F001,Ceiling,Rivets,638.81,pc.,1.48,942.24
+F001,Ceiling,1" Metal Screw,182.52,pc.,2.00,365.03
+F001,Prepainted Metal Sheets,Pre-Painted 4 mm. Galvanized Steel,36.73,sq.m.,300.00,"11,019.00"
+F001,Prepainted Metal Sheets,Metal Furring,41.54,pc.,"1,400.00","58,158.98"
+F001,Prepainted Metal Sheets,Carrying Channel,13.11,pc.,125.00,"1,639.08"
+F001,Prepainted Metal Sheets,Hanger Bars/Rod,36.73,pc.,25.00,918.25
+F001,Prepainted Metal Sheets,Channel Clip,220.38,pc.,4.50,991.71
+F001,Prepainted Metal Sheets,Wall Angle,8.74,pc.,90.00,786.76
+F001,Prepainted Metal Sheets,Rivets,514.22,pc.,1.48,758.47
+F001,Prepainted Metal Sheets,1" Metal Screw,146.92,pc.,2.00,293.84
+F001,Aluminum Metal Cladding,Aluminum Metal Cladding,38.20,sq.m.,300.00,"11,458.50"
+F001,Aluminum Metal Cladding,Metal Furring,45.00,pc.,"1,400.00","63,000.00"
+F001,Aluminum Metal Cladding,Rivets,"2,000.00",pc.,1.48,"2,950.00"
+F001,Aluminum Metal Cladding,Drill Bit,5.00,box,243.00,"1,215.00"
+F001,Wooden Panel Door,Wooden Panel Doors,4.62,sq.m.,"4,500.00","20,790.00"
+F001,Wooden Panel Door,PVC Door,2.94,sq.m.,"6,500.00","19,100.00"
+F001,Tempered Glass Window,Tempered Glass Window,21.54,sq.m.,550.00 ,"11,844.25"
+F001,Tempered Glass Window,Consumables (3% of material cost),,,,355.33
+F001,Prepainted Metal Sheets,Prepainted Metal Sheets,40.54,sq.m.,550.00 ,"22,294.25"
+F001,Prepainted Metal Sheets,Tek Screw,405.35,pc.,2.50 ,"1,013.38"
+F001,Prepainted Metal Sheets,Consumables (3% of material cost),,,,699.23
+F001,Liquid Waterproofing,Primer Coat,0.08,gal.,682.00 ,51.56
+F001,Liquid Waterproofing,Liquid Waterproofing,0.06,gal.,825.00 ,46.78
+F001,Liquid Waterproofing,Consumables (3% of material cost),,,,2.95
+F001,Glazed Tiles and Trims,Glazed Tiles,70.56,sq.m.,313,"22,085.28"
+F001,Glazed Tiles and Trims,Cement,91.84,bag,300,"6,552.00"
+F001,Glazed Tiles and Trims,Sand,1.75,cu.m.,"1,400.00","2,446.08"
+F001,Glazed Tiles and Trims,Tile Grout,8.4,bag,100,840
+F001,Glazed Tiles and Trims,Tile Adhesive,9.61,bag,595,"5,717.71"
+F001,Glazed Tiles and Trims,Consumables (3% of Material Cost),—,—,—,859.12
+F001,Cement Plaster Finish,Cement,155.1,bag,300,"46,530.00"
+F001,Cement Plaster Finish,Sand,12.69,cu.m.,"1,400.00","17,766.00"
+F001,Cement Plaster Finish,Concrete Neutralizer,5.66,gal.,682,"3,861.62"
+F001,Cement Plaster Finish,Concrete Sealer/Primer,11.32,gal.,682,"7,723.24"
+F001,Cement Plaster Finish,Patching Compound,14.16,gal.,682,"9,654.05"
+F001,Cement Plaster Finish,Semi Gloss Latex,22.65,gal.,759,"17,190.44"
+F001,Cement Plaster Finish,Consumables (3% of Material Cost),—,—,—,"1,152.88"
+F001,Painting Works (Metal),Red Oxide Primer,26.76,gal,500.00 ,"13,378.32"
+F001,Painting Works (Metal),Enamel Paint,66.89,gal,775.00 ,"51,840.99"
+F001,Painting Works (Metal),Paint Thinner,167.23,gal,334.00 ,"55,854.49"
+F001,Painting Works (Metal),Tinting Color,6.69,gal,1484.00 ,"9,926.71"
+F001,Painting Works (Metal),Consumables (3% of material cost),,,,"3,930.02"
+F001,Reflective Insulation,Reflective Insulation,40.54,sq.m.,130.00 ,"5,269.55"
+F001,Reflective Insulation,Consumables (3% of material cost),,,,158.09
+F001,Structural Steel (Trusses),Structural Steel Truss,528.33,kg.,48.00 ,"25,359.84"
+F001,Structural Steel (Trusses),Welding Rod,10.57,kg.,163.00 ,"1,722.36"
+F001,Structural Steel (Trusses),Oxy/Acetylene,1,set,"2,500.00","2,500.00"
+F001,Structural Steel (Trusses),Consumables (3% of material cost),,,,"1,479.11"
+F001,Structural Steel (Purlins),Structural Steel Purlis,197.93,kg.,48.00 ,"9,500.40"
+F001,Structural Steel (Purlins),Welding Rod,3.77,kg.,163.00 ,614.51
+F001,Structural Steel (Purlins),Consumables (5% of material cost),,,,505.75
+F001,Metal Railings,50 mm dia stainless steel pipe,7.00 ,pc.,"1,432.00","10,024.00"
+F001,Metal Railings,25 mm dia stainless steel pipe,14.00 ,pc.,636.00 ,"8,904"
+F001,Metal Railings,40 mm x 3 mm flat bar,9.00 ,pc.,272.00 ,"2,448.00"
+F001,Metal Railings,50 m x 100 mm rectangular tuble,18.00 ,pc.,"1,800.00","32,400.00"
+F001,Metal Railings,Welding Rod,10.00 ,kg.,163.00 ,"1,630.00"
+F001,Metal Railings,PWD Railings for Various Comfort Rooms,1.00 ,L.S.,"80,000.00","80,000.00"
+F001,Metal Railings,Consumables (5% of material cost),,,,"6,770.30"
+F001,"Conduits, Boxes & Fittings",20 mm dia rigid steel conduit,15.00 ,m.,504.00 ,"7,560.00"
+F001,"Conduits, Boxes & Fittings",32 mm dia rigid steel conduit,15.00 ,m.,965.00 ,"14,475.00"
+F001,"Conduits, Boxes & Fittings",15 mm dia PVC conduit pipe,15.00 ,pc.,73.00 ,"1,095.00"
+F001,"Conduits, Boxes & Fittings",20 mm dia PVC conduit pipe,7.00 ,pc.,96.00 ,672.00 
+F001,"Conduits, Boxes & Fittings",15 mm dia PVC Elbow,16.00 ,pc.,7.00 ,112.00 
+F001,"Conduits, Boxes & Fittings",15 mm dia PVC Tee,5.00 ,pc.,7.00 ,35.00 
+F001,"Conduits, Boxes & Fittings",20 mm dia PVC Elbow,18.00 ,pc.,21.00 ,378.00 
+F001,"Conduits, Boxes & Fittings",Utility Box,15.00 ,pc.,32.00 ,480.00 
+F001,"Conduits, Boxes & Fittings",Junction Box,23.00 ,pc.,34.00 ,782.00 
+F001,"Conduits, Boxes & Fittings",Miscellaneous (2% of Material Cost),,,,511.78
+F001,Wires and Wiring Devices,3.5 sq m THW/THHN,2.00 ,roll,"3,600.00","7,200.00"
+F001,Wires and Wiring Devices,5.5 sq m THW/THHN,1.00 ,roll,"5,700.00","5,700.00"
+F001,Wires and Wiring Devices,14 sq m THW/THHN,1.00 ,roll,"14,510.00","14,510.00"
+F001,Wires and Wiring Devices,30 sq m THW/THHN,3.00 ,roll,"30,900.00","92,700.00"
+F001,Wires and Wiring Devices,Duplex Convenient Outlet,7.00 ,set,"3,900.00","27,300.00"
+F001,Wires and Wiring Devices,2-gang switch,5.00 ,set,132.00 ,660.00 
+F001,Wires and Wiring Devices,3-gang switch,3.00 ,set,178.00 ,534.00 
+F001,Wires and Wiring Devices,electrical tape,5.00 ,roll,31.00 ,155.00 
+F001,Panelboard with Main and Branch Brackets,Panel Board 10 Branches MCB,1.00 ,set,"11,800.00","11,800.00"
+F001,Panelboard with Main and Branch Brackets,Panel Board 6 Branches MCB,1.00 ,set,"7,100.00","7,100.00"
+F001,Panelboard with Main and Branch Brackets,Main Distribution Line 4 Branches,1.00 ,set,"4,700.00","4,700.00"
+F001,Lighting Fixtures and Lamps,1x15 watt LED flourescent Fixtures,1.00 ,pc.,"1,280.00","1,280.00"
+F001,Lighting Fixtures and Lamps,21 watts led,24.00 ,pc.,"2,100.00","50,400.00"
+F001,Lighting Fixtures and Lamps,emergency light,1.00 ,pc.,"2,500.00","2,500.00"
+F001,Lighting Fixtures and Lamps,7 WATTS Led Wall lights,6.00 ,pc.,800.00 ,"4,800.00"
+F001,Lighting Fixtures and Lamps,5 WATTS LED Reccessed Downlight,22.00 ,pc.,780.00 ,"17,160.00"
+F001,Lighting Fixtures and Lamps,18 WATTS LED Tape,8.0 ,pc.,600.00 ,"4,800.00"
+F001,Auxilliary System,Grounding System,1.00 ,L.S.,"50,000.00","50,000.00"
+F001,Auxilliary System,Telephone Outlet,3.00 ,set,208.00 ,624.00 
+F001,Auxilliary System,Intercom Outlet,3.00 ,set,"4,770.00","14,310.00"
+F001,Auxilliary System,UTP Cable,1.00 ,roll,"2,864.00","2,864.00"
+F001,Auxilliary System,Intercom Cable,1.00 ,roll,"4,225.00","4,225.00"
+F001,Electric Elevator,Electric Elevator,1.0 ,L.S.,"5,000,000.00","5,000,000.00"

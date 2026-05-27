@@ -1,0 +1,136 @@
+USAGE ID,TASK ID,MATERIAL ID,MATERIALS,QUANTITY,Unit,Cost
+1,005,1,Ordinary Plywood 1/2" thk. x 4' x 8',2.00,pc.,"1,560.00"
+2,005,2,Tarpaulin (4' x 8'),2.00,pc.,"2,000.00"
+3,005,3,Assorted Lumber,100.00,bd.ft.,"3,700.00"
+4,005,4,Assorted CW Nails,2.00,kg.,120.00
+5,006,5,"Personal Protective Equipment (includes Hard Hats, Safety Shoes, Gloves, etc.)",1.00,L.S.,"8,000.00"
+6,006,6,Signages,1.00,L.S.,"15,000.00"
+7,014,7,W 10 x 33 Wide Flange,"6,799.95",kg.,"339,997.50"
+8,014,8,12 mm thk. Base Plate,32.20,kg.,"1,545.60"
+9,014,9,8 mm thk. Stiffener Plate,42.80,kg.,"2,054.40"
+10,014,10,20 mm dia. Anchor Bolt,24.00,pc.,864.00
+11,014,11,Welding Rod,154.30,kg.,"25,150.90"
+12,014,12,Oxy/Acetylene,7.00,set,"17,500.00"
+13,015,13,Oxy/Acetylene,1.00,set,"2,500.00"
+14,019,14,Gravel,173.00,cu.m.,"207,600.00"
+15,019,15,Sand,86.50,cu.m.,"121,100.00"
+16,019,16,Portland Cement,"1,574.30",bags,"472,290.00"
+17,020,17,Gravel,5.50,cu.m.,"6,600.00"
+18,020,18,Sand,2.75,cu.m.,"3,850.00"
+19,020,19,Portland Cement,50.05,bags,"15,015.00"
+20,021,21,Deformed Reinforcing Steel (Grade 60) 10 mm dia.,"1,367.00",kgs.,"54,680.00"
+21,021,22,Deformed Reinforcing Steel (Grade 60) 12 mm dia.,"2,361.00",kgs.,"94,440.00"
+22,021,23,Deformed Reinforcing Steel (Grade 60) 16 mm dia.,"5,101.00",kgs.,"204,040.00"
+23,021,24,Deformed Reinforcing Steel (Grade 60) 20 mm dia.,"1,334.00",kgs.,"53,360.00"
+24,021,25,#16 G.I. Tie Wire,152.45,kgs.,"15,244.50"
+25,021,26,Consumables (5% of material cost),,,"21,088.23"
+26,022,20,"G.I. Scaffold (including platform, clamps, pipes, etc.)",1.00,L.S.,"150,000.00"
+27,028,27,Roof Drain,2.00,pc.,382.00
+28,028,28,Floor Drain,1.00,pc.,191.00
+29,028,29,150 mm dia. PVC,6.00,pc.,"4,500.00"
+30,028,30,75 mm dia. PVC,9.00,pc.,"4,824.00"
+31,028,31,150 mm dia. PVC Elbow 90 deg.,6.00,pc.,654.00
+32,028,32,Consumables (5% of Material Cost),,,527.55
+33,029,33,Portland Cement,4.00,bag,"1,200.00"
+34,029,34,Sand,0.80,cu.m.,"1,120.00"
+35,029,35,Gravel,1.00,cu.m.,"1,200.00"
+36,029,36,Deformed Steel Bar,7.40,kg.,281.20
+37,029,37,#16 G.I. Tie Wire,0.10,kg.,10.00
+38,029,38,4" CHB,15.00,pc.,195.00
+39,033,39,6mm Thk. Ordinary Plywood,16.65,pc.,"4,996.38"
+40,034,40,Metal Furring,51.61,pc.,"72,248.96"
+41,034,41,Carrying Channel,16.29,pc.,"2,036.19"
+42,034,42,Hanger Bars/Rod,45.63,pc.,"1,140.73"
+43,034,43,Channel Clip,273.77,pc.,"1,231.98"
+44,034,44,Wall Angle,10.86,pc.,977.37
+45,034,45,Rivets,638.81,pc.,942.24
+46,034,46,1" Metal Screw,182.52,pc.,365.03
+47,036,47,Pre-Painted 4 mm. Galvanized Steel,36.73,sq.m.,"11,019.00"
+48,036,48,Metal Furring,41.54,pc.,"58,158.98"
+49,036,49,Carrying Channel,13.11,pc.,"1,639.08"
+50,036,50,Hanger Bars/Rod,36.73,pc.,918.25
+51,036,51,Channel Clip,220.38,pc.,991.71
+52,036,52,Wall Angle,8.74,pc.,786.76
+53,036,53,Rivets,514.22,pc.,758.47
+54,036,54,1" Metal Screw,146.92,pc.,293.84
+55,037,55,Aluminum Metal Cladding,38.20,sq.m.,"11,458.50"
+56,037,56,Metal Furring,45.00,pc.,"63,000.00"
+57,037,57,Rivets,"2,000.00",pc.,"2,950.00"
+58,037,58,Drill Bit,5.00,box,"1,215.00"
+59,038,59,Wooden Panel Doors,4.62,sq.m.,"20,790.00"
+60,038,60,PVC Door,2.94,sq.m.,"19,100.00"
+61,039,61,Tempered Glass Window,21.54,sq.m.,"11,844.25"
+62,039,62,Consumables (3% of material cost),,,355.33
+63,040,63,Prepainted Metal Sheets,40.54,sq.m.,"22,294.25"
+64,040,64,Tek Screw,405.35,pc.,"1,013.38"
+65,040,65,Consumables (3% of material cost),,,699.23
+66,044,66,Primer Coat,0.08,gal.,51.56
+67,04,67,Liquid Waterproofing,0.06,gal.,46.78
+68,044,68,Consumables (3% of material cost),,,2.95
+69,042,69,Glazed Tiles,70.56,sq.m.,"22,085.28"
+70,042,70,Cement,91.84,bag,"6,552.00"
+71,042,71,Sand,1.75,cu.m.,"2,446.08"
+72,042,72,Tile Grout,8.4,bag,840
+73,042,73,Tile Adhesive,9.61,bag,"5,717.71"
+74,042,74,Consumables (3% of Material Cost),—,—,859.12
+75,035,75,Cement,155.1,bag,"46,530.00"
+76,035,76,Sand,12.69,cu.m.,"17,766.00"
+77,035,77,Concrete Neutralizer,5.66,gal.,"3,861.62"
+78,035,78,Concrete Sealer/Primer,11.32,gal.,"7,723.24"
+79,035,79,Patching Compound,14.16,gal.,"9,654.05"
+80,035,80,Semi Gloss Latex,22.65,gal.,"17,190.44"
+81,035,81,Consumables (3% of Material Cost),—,—,"1,152.88"
+82,048,82,Red Oxide Primer,26.76,gal,"13,378.32"
+83,048,83,Enamel Paint,66.89,gal,"51,840.99"
+84,048,84,Paint Thinner,167.23,gal,"55,854.49"
+85,048,85,Tinting Color,6.69,gal,"9,926.71"
+86,048,86,Consumables (3% of material cost),,,"3,930.02"
+87,048,87,Reflective Insulation,40.54,sq.m.,"5,269.55"
+88,048,88,Consumables (3% of material cost),,,158.09
+89,025,89,Structural Steel Truss,528.33,kg.,"25,359.84"
+90,025,90,Welding Rod,10.57,kg.,"1,722.36"
+91,025,91,Oxy/Acetylene,1,set,"2,500.00"
+92,025,92,Consumables (3% of material cost),,,"1,479.11"
+93,026,93,Structural Steel Purlis,197.93,kg.,"9,500.40"
+94,026,94,Welding Rod,3.77,kg.,614.51
+95,026,95,Consumables (5% of material cost),,,505.75
+96,027,96,50 mm dia stainless steel pipe,7.00 ,pc.,"10,024.00"
+97,027,97,25 mm dia stainless steel pipe,14.00 ,pc.,"8,904"
+98,027,98,40 mm x 3 mm flat bar,9.00 ,pc.,"2,448.00"
+99,027,99,50 m x 100 mm rectangular tuble,18.00 ,pc.,"32,400.00"
+100,027,100,Welding Rod,10.00 ,kg.,"1,630.00"
+101,027,101,PWD Railings for Various Comfort Rooms,1.00 ,L.S.,"80,000.00"
+102,027,102,Consumables (5% of material cost),,,"6,770.30"
+103,050,103,20 mm dia rigid steel conduit,15.00 ,m.,"7,560.00"
+104,050,104,32 mm dia rigid steel conduit,15.00 ,m.,"14,475.00"
+105,050,105,15 mm dia PVC conduit pipe,15.00 ,pc.,"1,095.00"
+106,050,106,20 mm dia PVC conduit pipe,7.00 ,pc.,672.00 
+107,050,107,15 mm dia PVC Elbow,16.00 ,pc.,112.00 
+108,050,108,15 mm dia PVC Tee,5.00 ,pc.,35.00 
+109,050,109,20 mm dia PVC Elbow,18.00 ,pc.,378.00 
+110,050,110,Utility Box,15.00 ,pc.,480.00 
+111,050,111,Junction Box,23.00 ,pc.,782.00 
+112,050,112,Miscellaneous (2% of Material Cost),,,511.78
+113,051,113,3.5 sq m THW/THHN,2.00 ,roll,"7,200.00"
+114,051,114,5.5 sq m THW/THHN,1.00 ,roll,"5,700.00"
+115,051,115,14 sq m THW/THHN,1.00 ,roll,"14,510.00"
+116,051,116,30 sq m THW/THHN,3.00 ,roll,"92,700.00"
+117,051,117,Duplex Convenient Outlet,7.00 ,set,"27,300.00"
+118,051,118,2-gang switch,5.00 ,set,660.00 
+119,051,119,3-gang switch,3.00 ,set,534.00 
+120,051,120,electrical tape,5.00 ,roll,155.00 
+121,052,121,Panel Board 10 Branches MCB,1.00 ,set,"11,800.00"
+122,052,122,Panel Board 6 Branches MCB,1.00 ,set,"7,100.00"
+123,052,123,Main Distribution Line 4 Branches,1.00 ,set,"4,700.00"
+124,053,124,1x15 watt LED flourescent Fixtures,1.00 ,pc.,"1,280.00"
+125,053,125,21 watts led,24.00 ,pc.,"50,400.00"
+126,053,126,emergency light,1.00 ,pc.,"2,500.00"
+127,053,127,7 WATTS Led Wall lights,6.00 ,pc.,"4,800.00"
+128,053,128,5 WATTS LED Reccessed Downlight,22.00 ,pc.,"17,160.00"
+129,053,129,18 WATTS LED Tape,8.0 ,pc.,"4,800.00"
+130,054,130,Grounding System,1.00 ,L.S.,"50,000.00"
+131,054,131,Telephone Outlet,3.00 ,set,624.00 
+132,054,132,Intercom Outlet,3.00 ,set,"14,310.00"
+133,054,133,UTP Cable,1.00 ,roll,"2,864.00"
+134,054,134,Intercom Cable,1.00 ,roll,"4,225.00"
+135,055,135,Electric Elevator,1.0 ,L.S.,"5,000,000.00"
